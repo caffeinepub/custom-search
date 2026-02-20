@@ -1,0 +1,17 @@
+{
+  "backend/main.mo": "Motoko actor that provides a search function by making HTTP outcalls to DuckDuckGo's API with URL-encoded queries and returning JSON results via a transform function.",
+  "feature_evidence.json": "Feature evidence report documenting two completed features for rendering URLs as clickable links in SearchInterface.tsx that open in the same tab.",
+  "frontend-file-summaries.txt": "JSON-formatted summaries of frontend files describing the search interface, hooks, styling, and URL formatting utilities.",
+  "frontend/index.css": "Tailwind CSS configuration with OKLCH color variables for light and dark modes using neutral grayscale values.",
+  "frontend/index.html": "HTML entry point that loads the React app with a root div and module script reference to main.tsx.",
+  "frontend/src/App.tsx": "Root React component that renders the SearchInterface within a full-height flex container.",
+  "frontend/src/components/SearchInterface.tsx": "Complete search UI component with form input, loading states, error handling, and results display that parses JSON from backend and renders abstracts and related topics with auto-linkified URLs opening in the same tab.",
+  "frontend/src/hooks/useActor.ts": "React hook that creates and manages the backend actor instance with optional Internet Identity authentication, invalidating dependent queries when the actor changes.",
+  "frontend/src/hooks/useInternetIdentity.ts": "React context provider and hook for Internet Identity authentication, managing login state, identity persistence, and AuthClient lifecycle with configurable options.",
+  "frontend/src/hooks/useSearch.ts": "Custom React hook that manages search state (results, loading, error) and calls the backend actor's search method with URL-encoded queries, validating JSON responses.",
+  "frontend/src/index.css": "Tailwind CSS with custom OKLCH color system using warm coral/orange primary and deep teal accent colors for light and dark modes, plus fadeIn animation utility.",
+  "frontend/src/main.tsx": "React application entry point that sets up QueryClient, InternetIdentityProvider, and renders the App component into the DOM.",
+  "frontend/src/utils/urlFormatter.tsx": "Utility functions that detect URLs in text using regex and convert them to clickable anchor tags (opening in same tab) as React JSX nodes.",
+  "frontend/tailwind.config.js": "Tailwind CSS configuration file that defines a custom design system with OKLCH color variables, extended theme settings including container, border radius, shadows, fonts, and accordion animations, plus typography, container queries, and animate plugins.",
+  "project_state.json": "Project state tracking file for a custom search application showing 6 completed features (search interface, visual design, search functionality fixes, URL rendering) and 3 pending feature requests (backend API integration, DuckDuckGo HTTP outcalls verification, clickable URLs)."
+}

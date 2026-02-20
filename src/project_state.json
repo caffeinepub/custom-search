@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 7,
+  "summary": "New project",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-create-a-search-interface-that-allows-users-to-enter-search-queries-and-displays-results-from-a-search-api",
+      "title": "Create a search interface that allows users to enter search queries and displays results from a search API",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-distinctive-creative-visual-design-with-a-coherent-color-scheme-typography-and-layout-style-that-creates-a-unique-branded-search-experience",
+      "title": "Apply a distinctive, creative visual design with a coherent color scheme, typography, and layout style that creates a unique branded search experience",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-debug-and-fix-the-search-functionality-so-that-when-users-enter-a-search-query-and-submit-the-form-the-backend-search-endpoint-is-called-and-results-are-returned-to-the-frontend",
+      "title": "Debug and fix the search functionality so that when users enter a search query and submit the form, the backend search endpoint is called and results are returned to the frontend",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-frontend-usesearch-hook-correctly-calls-the-backend-actor-s-search-method-and-handles-the-response-data-structure",
+      "title": "Ensure the frontend useSearch hook correctly calls the backend actor's search method and handles the response data structure",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-modify-the-searchinterface-component-to-detect-and-render-all-urls-in-search-results-as-clickable-anchor-tags-that-open-in-the-same-tab-without-target-blank",
+      "title": "Modify the SearchInterface component to detect and render all URLs in search results as clickable anchor tags that open in the same tab (without target=\"_blank\")",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-that-clicking-on-a-search-result-title-or-link-navigates-directly-to-the-url-without-opening-in-a-new-tab",
+      "title": "Ensure that clicking on a search result title or link navigates directly to the URL without opening in a new tab",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-2",
+      "summary": "Implement backend integration with a search API to fetch and return search results",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Verify that the backend HTTP outcalls to the DuckDuckGo API are properly configured with correct headers, query parameters, and response transformation",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Make all URLs in search results clickable and open them in the same tab when clicked",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "projectName": "Custom Search",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

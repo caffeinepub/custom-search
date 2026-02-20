@@ -1,0 +1,43 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-modify-the-searchinterface-component-to-detect-and-render-all-urls-in-search-results-as-clickable-anchor-tags-that-open-in-the-same-tab-without-target-blank",
+      "featureTitle": "Modify the SearchInterface component to detect and render all URLs in search results as clickable anchor tags that open in the same tab (without target=\"_blank\")",
+      "files": [
+        "frontend/src/components/SearchInterface.tsx"
+      ],
+      "components": [
+        "http-outcalls@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-ensure-that-clicking-on-a-search-result-title-or-link-navigates-directly-to-the-url-without-opening-in-a-new-tab",
+      "featureTitle": "Ensure that clicking on a search result title or link navigates directly to the URL without opening in a new tab",
+      "files": [
+        "frontend/src/components/SearchInterface.tsx"
+      ],
+      "components": [
+        "http-outcalls@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "frontend/src/App.tsx": "Main application component that renders the SearchInterface as the primary view.",
+  "frontend/src/components/SearchInterface.tsx": "Complete search interface with input form, results display (abstract and related topics with auto-detected clickable URLs), loading/error states, header with branding, and footer with attribution; all URLs now open in the same tab.",
+  "frontend/src/hooks/useSearch.ts": "Custom hook that manages search state and communicates with the backend actor, now properly URL-encoding queries before sending them to the backend and validating JSON responses.",
+  "frontend/src/index.css": "Global styles with a warm coral/orange and teal OKLCH color system for both light and dark modes, creating a distinctive branded aesthetic.",
+  "frontend/tailwind.config.js": "Tailwind configuration extended with custom border radius values (xl, 2xl) and enhanced shadow utilities to support the unique design system.",
+  "frontend/src/utils/urlFormatter.tsx": "Utility module that detects URLs in text using regex and converts them to clickable anchor tags that open in the same tab, returning properly formatted JSX with text and links."
+}

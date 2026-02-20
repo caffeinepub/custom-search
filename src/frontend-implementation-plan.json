@@ -1,0 +1,45 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Make all URLs in search results clickable and open in same tab",
+  "requirements": [
+    {
+      "id": "REQ-7",
+      "summary": "Modify the SearchInterface component to detect and render all URLs in search results as clickable anchor tags that open in the same tab",
+      "acceptanceCriteria": [
+        "All URLs in search result abstracts, titles, and related topics are automatically detected and rendered as <a> tags",
+        "Clicking any URL navigates to that URL in the same browser tab",
+        "URLs maintain the existing color scheme and styling consistent with the application's design",
+        "If a search result title contains a URL, clicking the title opens that URL directly"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/SearchInterface.tsx",
+          "operation": "modify",
+          "description": "Add URL detection and rendering logic to automatically convert URLs in search result text (abstracts, titles, and related topics) into clickable anchor tags. Implement a utility function that uses regex to detect URLs and wraps them in <a> tags without target=\"_blank\". Apply this transformation to all text fields in the parsed search results before rendering. Ensure anchor tags use the existing OKLCH color system for consistency with the application's design."
+        },
+        {
+          "path": "frontend/src/utils/urlFormatter.ts",
+          "operation": "create",
+          "description": "Create a utility module containing a function that detects URLs in text using a comprehensive URL regex pattern and returns JSX with clickable links. The function should handle both plain text URLs and URLs within larger text blocks, wrapping each detected URL in an anchor tag that opens in the same tab (no target attribute). Include proper escaping for text segments and maintain the order of text and links."
+        }
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "summary": "Ensure that clicking on a search result title or link navigates directly to the URL without opening in a new tab",
+      "acceptanceCriteria": [
+        "Search result titles are clickable and navigate to their URLs in the same tab",
+        "No new tabs or windows are opened when clicking search results",
+        "The navigation is immediate without additional confirmation dialogs"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/SearchInterface.tsx",
+          "operation": "modify",
+          "description": "Update the rendering logic for search result titles to make them clickable anchor tags that navigate to their associated URLs in the same tab. If a title contains a URL, extract it and wrap the title text in an anchor tag without target=\"_blank\". If the title itself is a URL, render it as a direct link. Remove any existing target=\"_blank\" attributes from result links. Ensure all navigation happens in the same browser tab without additional confirmation prompts."
+        }
+      ]
+    }
+  ]
+}

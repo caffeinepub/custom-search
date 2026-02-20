@@ -1,0 +1,50 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-20T19:27:16.940Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 2,
+    "implemented": 2,
+    "items": [
+      {
+        "id": "REQ-7",
+        "summary": "Modify the SearchInterface component to detect and render all URLs in search results as clickable anchor tags that open in the same tab (without target=\"_blank\")",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/SearchInterface.tsx",
+          "frontend/src/utils/urlFormatter.ts"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/SearchInterface.tsx"
+        ]
+      },
+      {
+        "id": "REQ-8",
+        "summary": "Ensure that clicking on a search result title or link navigates directly to the URL without opening in a new tab",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/SearchInterface.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/SearchInterface.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/components/SearchInterface.tsx",
+    "frontend/src/utils/urlFormatter.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}
