@@ -2,12 +2,11 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-rebuild-and-redeploy-the-current-application-as-a-new-version-preserving-all-existing-functionality-including-the-duckduckgo-search-interface-in-app-browser-modal-error-handling-and-google-search-console-verification-file",
-      "featureTitle": "Rebuild and redeploy the current application as a new version, preserving all existing functionality including the DuckDuckGo search interface, in-app browser modal, error handling, and Google Search Console verification file.",
+      "featureId": "feature-update-all-references-to-the-application-domain-across-the-project-to-use-securelytime-com-including-any-configuration-files-html-meta-tags-canonical-urls-site-verification-files-and-any-hardcoded-domain-strings-in-frontend-or-backend-code",
+      "featureTitle": "Update all references to the application domain across the project to use 'securelytime.com', including any configuration files, HTML meta tags, canonical URLs, site verification files, and any hardcoded domain strings in frontend or backend code.",
       "files": [
-        "frontend/src/components/InAppBrowser.tsx",
-        "frontend/src/index.css",
-        "frontend/tailwind.config.js"
+        "frontend/index.html",
+        "frontend/src/components/SearchInterface.tsx"
       ],
       "components": [
         "http-outcalls@3.0.0",

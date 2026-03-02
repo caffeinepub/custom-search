@@ -3,6 +3,13 @@ import Text "mo:core/Text";
 import Runtime "mo:core/Runtime";
 
 actor {
+  func withNotFoundError<T>(result : ?T, errorMessage : Text) : T {
+    switch (result) {
+      case (null) { Runtime.trap(errorMessage # " not found") };
+      case (?value) { value };
+    };
+  };
+
   public query func transform(input : OutCall.TransformationInput) : async OutCall.TransformationOutput {
     OutCall.transform(input);
   };
@@ -17,6 +24,7 @@ actor {
   public shared ({ caller }) func fetchSearchResults(searchQuery : Text) : async Text {
     let url = makeOutcallURL(searchQuery);
     let result = await OutCall.httpGetRequest(url, [], transform);
+
     if (result.contains(#text("Network error: HTTP request returned status code 0"))) {
       let msg =
         "DuckDuckGo HTTP outcall failed. Please check your node provider settings (ccfi-cli node-provider list). "
@@ -32,4 +40,3 @@ actor {
     await fetchSearchResults(searchQuery);
   };
 };
-

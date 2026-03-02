@@ -1,78 +1,46 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Rebuild Current Application Version",
+  "title": "Update domain to securelytime.com",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Rebuild and redeploy the current application as a new version, preserving all existing functionality including the DuckDuckGo search interface, in-app browser modal, error handling, and Google Search Console verification file",
+      "summary": "Update all domain references to securelytime.com across frontend configuration, HTML meta tags, and source code",
       "acceptanceCriteria": [
-        "A new version is successfully built and deployed",
-        "All existing search functionality remains intact",
-        "The in-app browser modal continues to work as before",
-        "Error states and loading states display correctly",
-        "The Google Search Console verification file remains accessible"
+        "All domain references in the codebase point to securelytime.com",
+        "The index.html or any HTML meta/canonical tags reference securelytime.com if applicable",
+        "No references to any previous domain remain in configuration or source files"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/App.tsx",
-          "operation": "modify",
-          "description": "Review and preserve the root component structure that renders SearchInterface inside a full-height flex container, ensuring all existing functionality remains intact"
-        },
-        {
-          "path": "frontend/src/components/SearchInterface.tsx",
-          "operation": "modify",
-          "description": "Review and preserve the main search UI component with search form, loading/error/empty states, flattened DuckDuckGo RelatedTopics rendering, in-app browser integration, and context-aware error icons and titles"
-        },
-        {
-          "path": "frontend/src/components/InAppBrowser.tsx",
-          "operation": "modify",
-          "description": "Review and preserve the fullscreen modal iframe browser with header bar, loading spinner, and fallback UI for sites that block iframe embedding"
-        },
-        {
-          "path": "frontend/src/hooks/useSearch.ts",
-          "operation": "modify",
-          "description": "Review and preserve the search hook that calls the ICP actor, manages loading/error/result state, and includes detailed error parsing for ICP-specific error codes and canister trap messages"
-        },
-        {
-          "path": "frontend/src/hooks/useActor.ts",
-          "operation": "modify",
-          "description": "Review and preserve the custom hook that creates and caches an ICP backend actor using React Query, recreating it when Internet Identity changes"
-        },
-        {
-          "path": "frontend/src/hooks/useInternetIdentity.ts",
-          "operation": "modify",
-          "description": "Review and preserve the Internet Identity authentication context provider and hook, managing login/logout state, AuthClient lifecycle, and identity persistence"
-        },
-        {
-          "path": "frontend/src/utils/urlFormatter.tsx",
-          "operation": "modify",
-          "description": "Review and preserve the utility functions to detect URLs in text and render them as clickable elements, plus URL validation helper"
-        },
-        {
-          "path": "frontend/src/index.css",
-          "operation": "modify",
-          "description": "Review and preserve the global CSS with Tailwind directives and OKLCH-based CSS custom properties for light and dark theme color tokens"
-        },
-        {
-          "path": "frontend/tailwind.config.js",
-          "operation": "modify",
-          "description": "Review and preserve the Tailwind configuration extending the default theme with OKLCH-based color tokens, custom border radii, shadows, fonts, and accordion keyframe animations"
-        },
-        {
-          "path": "frontend/src/main.tsx",
-          "operation": "modify",
-          "description": "Review and preserve the React app entry point that mounts the root component wrapped with QueryClientProvider and InternetIdentityProvider"
-        },
-        {
           "path": "frontend/index.html",
           "operation": "modify",
-          "description": "Review and preserve the minimal HTML entry point that mounts the React app into a root div and loads the main TypeScript module"
+          "description": "Update any domain references in HTML meta tags, canonical URLs, or Open Graph tags to use securelytime.com"
         },
         {
           "path": "frontend/public/google0e657d46cb230404.html",
           "operation": "modify",
-          "description": "Ensure the Google Search Console site verification file remains accessible at its current location and with its current content"
+          "description": "Update Google Search Console verification file to reference securelytime.com if it contains any domain-specific content or meta tags"
+        },
+        {
+          "path": "frontend/src/components/SearchInterface.tsx",
+          "operation": "modify",
+          "description": "Search for and replace any hardcoded domain strings with securelytime.com"
+        },
+        {
+          "path": "frontend/src/components/InAppBrowser.tsx",
+          "operation": "modify",
+          "description": "Update any domain references in error messages, fallback text, or CSP-related comments to use securelytime.com"
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Update any hardcoded domain strings or configuration references to securelytime.com"
+        },
+        {
+          "path": "frontend/src/main.tsx",
+          "operation": "modify",
+          "description": "Update any domain references in application initialization or metadata to securelytime.com"
         }
       ]
     }

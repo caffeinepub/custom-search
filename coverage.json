@@ -1,7 +1,7 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-03-02T22:14:36.492Z",
+  "generatedAt": "2026-03-02T22:28:13.278Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
@@ -12,26 +12,19 @@
     "items": [
       {
         "id": "REQ-1",
-        "summary": "Rebuild and redeploy the current application as a new version, preserving all existing functionality including the DuckDuckGo search interface, in-app browser modal, error handling, and Google Search Console verification file.",
+        "summary": "Update all references to the application domain across the project to use 'securelytime.com', including any configuration files, HTML meta tags, canonical URLs, site verification files, and any hardcoded domain strings in frontend or backend code.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/App.tsx",
+          "frontend/index.html",
+          "frontend/public/google0e657d46cb230404.html",
           "frontend/src/components/SearchInterface.tsx",
           "frontend/src/components/InAppBrowser.tsx",
-          "frontend/src/hooks/useSearch.ts",
-          "frontend/src/hooks/useActor.ts",
-          "frontend/src/hooks/useInternetIdentity.ts",
-          "frontend/src/utils/urlFormatter.tsx",
-          "frontend/src/index.css",
-          "frontend/tailwind.config.js",
-          "frontend/src/main.tsx",
-          "frontend/index.html",
-          "frontend/public/google0e657d46cb230404.html"
+          "frontend/src/App.tsx",
+          "frontend/src/main.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/components/InAppBrowser.tsx",
-          "frontend/src/index.css",
-          "frontend/tailwind.config.js"
+          "frontend/index.html",
+          "frontend/src/components/SearchInterface.tsx"
         ]
       }
     ]
@@ -41,9 +34,8 @@
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/src/components/InAppBrowser.tsx",
-    "frontend/src/index.css",
-    "frontend/tailwind.config.js",
+    "frontend/index.html",
+    "frontend/src/components/SearchInterface.tsx",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

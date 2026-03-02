@@ -114,7 +114,7 @@ export default function SearchInterface() {
             <div className="w-10 h-10 rounded-full bg-gradient-to-br from-accent via-primary to-accent-foreground flex items-center justify-center">
               <Search className="w-5 h-5 text-primary-foreground" />
             </div>
-            <h1 className="text-2xl font-bold tracking-tight">SearchHub</h1>
+            <h1 className="text-2xl font-bold tracking-tight">securelytime.com</h1>
             {isConnecting && (
               <span className="text-xs text-muted-foreground flex items-center gap-1 ml-2">
                 <Loader2 className="w-3 h-3 animate-spin" />
@@ -331,12 +331,12 @@ export default function SearchInterface() {
       <footer className="border-t border-border bg-card mt-auto">
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
-            <p>© {new Date().getFullYear()} SearchHub. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} securelytime.com. All rights reserved.</p>
             <p>
               Built with ❤️ using{' '}
               <a
                 href={`https://caffeine.ai/?utm_source=Caffeine-footer&utm_medium=referral&utm_content=${encodeURIComponent(
-                  typeof window !== 'undefined' ? window.location.hostname : 'searchhub'
+                  typeof window !== 'undefined' ? window.location.hostname : 'securelytime.com'
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"

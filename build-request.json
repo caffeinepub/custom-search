@@ -1,34 +1,36 @@
 {
   "kind": "build_request",
-  "title": "Create new version (rebuild/refresh current state)",
+  "title": "Update domain to securelytime.com",
+  "projectName": "Securely Time",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Rebuild and redeploy the current application as a new version, preserving all existing functionality including the DuckDuckGo search interface, in-app browser modal, error handling, and Google Search Console verification file.",
+      "text": "Update all references to the application domain across the project to use 'securelytime.com', including any configuration files, HTML meta tags, canonical URLs, site verification files, and any hardcoded domain strings in frontend or backend code.",
       "target": "both",
       "source": {
         "messageIds": [
-          "msg-latest"
+          "msg-3"
         ],
         "quotes": [
-          "Can you make verion"
+          "Change domain to securelytime.com"
         ]
       },
       "acceptanceCriteria": [
-        "A new version is successfully built and deployed",
-        "All existing search functionality remains intact",
-        "The in-app browser modal continues to work as before",
-        "Error states and loading states display correctly",
-        "The Google Search Console verification file remains accessible"
+        "All domain references in the codebase point to securelytime.com",
+        "The index.html or any HTML meta/canonical tags reference securelytime.com if applicable",
+        "No references to any previous domain remain in configuration or source files"
       ]
     }
   ],
-  "constraints": [],
+  "constraints": [
+    "Do not modify files listed in frontend.immutablePaths",
+    "Do not alter core application logic unrelated to the domain change"
+  ],
   "nonGoals": [
-    "Adding new features beyond what currently exists",
-    "Changing the DNS configuration or adding TXT records",
-    "Modifying the search provider from DuckDuckGo"
+    "DNS configuration or hosting provider setup",
+    "SSL certificate provisioning",
+    "Any new feature development"
   ],
   "imageRequirements": {
     "required": [],
