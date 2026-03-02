@@ -5,5 +5,5 @@
   "frontend/src/index.css": "Global styles defining an OKLCH-based warm coral/teal color system for both light and dark modes, with Tailwind directives and a fade-in animation utility.",
   "frontend/tailwind.config.js": "Tailwind configuration mapping OKLCH CSS variables to semantic color tokens, with custom border-radius, shadow, font-family, and accordion keyframe extensions.",
   "frontend/src/utils/urlFormatter.tsx": "Utility that detects URLs in text and converts them to clickable elements; accepts an optional `onLinkClick` callback to open links in the in-app browser instead of navigating natively.",
-  "frontend/src/components/InAppBrowser.tsx": "Fullscreen modal overlay that renders an iframe for displaying external URLs in-app, with a header bar showing the URL, a close button, a loading spinner until the iframe loads, and a fallback \"open in new tab\" link."
+  "frontend/src/components/InAppBrowser.tsx": "Fullscreen modal overlay that renders an iframe for external URLs, with a header bar, loading spinner, and automatic blocked-content detection (via load-timing heuristic and onError). When a site blocks iframe embedding (X-Frame-Options / CSP), a friendly fallback panel is shown with a prominent \"Open in new tab\" button and a \"Go back to results\" option."
 }

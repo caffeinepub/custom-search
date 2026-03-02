@@ -18,7 +18,12 @@ actor {
     let url = makeOutcallURL(searchQuery);
     let result = await OutCall.httpGetRequest(url, [], transform);
     if (result.contains(#text("Network error: HTTP request returned status code 0"))) {
-      Runtime.trap("DuckDuckGo HTTP outcall failed. Please check your node provider settings (ccfi-cli node-provider list). " # "Current node provider address is not authorized for HTTP outcalls. " # "You need to select a node provider that enables HTTP outcalls. " # "This feature is generally available only in production scenarios due to cost factors.");
+      Runtime.trap(
+        "DuckDuckGo HTTP outcall failed. Please check your node provider settings (ccfi-cli node-provider list). " #
+        "Current node provider address is not authorized for HTTP outcalls. " #
+        "You need to select a node provider that enables HTTP outcalls. " #
+        "This feature is generally available only in production scenarios due to cost factors."
+      );
     } else {
       result;
     };

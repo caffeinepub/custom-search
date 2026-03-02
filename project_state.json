@@ -3,38 +3,16 @@
   "projectStateVersion": 3,
   "summary": "New project",
   "architectural_notes": [],
-  "known_issues": [],
-  "isFixRequest": false,
+  "known_issues": [
+    "Users are seeing a Google 'access denied' page after deployment, indicating a permissions or OAuth configuration issue"
+  ],
+  "isFixRequest": true,
   "existing_features": [
     {
-      "id": "feature-implement-the-usesearch-custom-hook-that-calls-the-backend-actor-s-search-function-url-encodes-the-query-validates-the-json-response-extracts-meaningful-error-messages-from-icp-canister-traps-and-exposes-loading-error-and-results-state-to-consuming-components",
-      "title": "Implement the useSearch custom hook that calls the backend actor's search function, URL-encodes the query, validates the JSON response, extracts meaningful error messages from ICP canister traps, and exposes loading, error, and results state to consuming components.",
+      "id": "feature-in-the-inappbrowser-component-when-an-iframe-fails-to-load-or-is-blocked-e-g-x-frame-options-denial-display-a-user-friendly-message-with-a-button-to-open-the-url-in-a-new-tab-instead-of-showing-a-broken-or-empty-iframe-detect-iframe-load-errors-and-show-a-fallback-ui-immediately",
+      "title": "In the InAppBrowser component, when an iframe fails to load or is blocked (e.g., X-Frame-Options denial), display a user-friendly message with a button to open the URL in a new tab instead of showing a broken or empty iframe. Detect iframe load errors and show a fallback UI immediately.",
       "reqIds": [
         "REQ-2"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-implement-the-searchinterface-component-that-renders-a-search-form-handles-submission-displays-loading-error-empty-states-flattens-duckduckgo-topic-groups-into-a-flat-results-list-and-opens-result-links-in-the-inappbrowser-overlay-component",
-      "title": "Implement the SearchInterface component that renders a search form, handles submission, displays loading/error/empty states, flattens DuckDuckGo topic groups into a flat results list, and opens result links in the InAppBrowser overlay component.",
-      "reqIds": [
-        "REQ-3"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-implement-the-inappbrowser-component-as-a-fullscreen-modal-overlay-that-displays-an-external-url-in-an-iframe-includes-a-header-bar-with-the-url-a-loading-spinner-while-the-iframe-loads-a-close-button-to-dismiss-the-overlay-and-a-fallback-link-to-open-the-url-in-a-new-tab",
-      "title": "Implement the InAppBrowser component as a fullscreen modal overlay that displays an external URL in an iframe, includes a header bar with the URL, a loading spinner while the iframe loads, a close button to dismiss the overlay, and a fallback link to open the URL in a new tab.",
-      "reqIds": [
-        "REQ-4"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-apply-a-cohesive-dark-themed-visual-design-across-the-entire-application-using-a-dark-background-with-high-contrast-foreground-text-clean-sans-serif-typography-and-a-minimal-card-based-layout-for-search-results-define-oklch-based-css-custom-properties-for-the-color-system-and-ensure-light-dark-theme-tokens-are-consistent-throughout",
-      "title": "Apply a cohesive dark-themed visual design across the entire application using a dark background with high-contrast foreground text, clean sans-serif typography, and a minimal card-based layout for search results. Define OKLCH-based CSS custom properties for the color system and ensure light/dark theme tokens are consistent throughout.",
-      "reqIds": [
-        "REQ-5"
       ],
       "version": 1
     }
@@ -42,14 +20,14 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "Implement a Motoko backend actor that performs HTTP outcalls to the DuckDuckGo API (https://api.duckduckgo.com/?q={query}&format=json) to fetch search results, parses and returns the JSON response, and handles HTTP errors gracefully with descriptive error messages.",
+      "summary": "Ensure the backend HTTP outcall targets the DuckDuckGo API endpoint and does not make any requests to Google or any URL that would trigger a Google OAuth/access page. Verify the constructed URL in the Motoko actor points to DuckDuckGo (e.g., api.duckduckgo.com) and remove any Google-related URLs.",
       "reqIds": [
         "REQ-1"
       ],
       "status": "pending"
     }
   ],
-  "projectName": "ICP Search",
+  "projectName": "Fix Google access denied page — replace Google with DuckDuckGo search backend",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }
