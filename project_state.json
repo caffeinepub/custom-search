@@ -1,18 +1,20 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "New project",
-  "architectural_notes": [],
-  "known_issues": [
-    "Google access issue persists after attempted fix in Version 9"
+  "summary": "Project involves uploading a Google site verification HTML file (google0e657d46cb230404.html) to a website, likely to verify ownership in Google Search Console.",
+  "architectural_notes": [
+    "Google site verification file (google0e657d46cb230404.html) must be served at the website root for Google Search Console verification"
   ],
-  "isFixRequest": true,
+  "known_issues": [
+    "Google OAuth consent screen is in Testing mode, causing 'cannot access the page' errors for non-whitelisted users"
+  ],
+  "isFixRequest": false,
   "existing_features": [
     {
-      "id": "feature-audit-the-frontend-search-hook-usesearch-ts-and-searchinterface-component-to-ensure-no-google-specific-urls-api-keys-or-oauth-flows-are-referenced-remove-or-replace-any-remaining-google-references",
-      "title": "Audit the frontend search hook (useSearch.ts) and SearchInterface component to ensure no Google-specific URLs, API keys, or OAuth flows are referenced. Remove or replace any remaining Google references.",
+      "id": "feature-serve-the-google-site-verification-file-at-the-path-google0e657d46cb230404-html-the-file-must-be-accessible-at-the-website-root-and-contain-exactly-the-content-google-site-verification-google0e657d46cb230404-html-so-that-google-search-console-can-verify-site-ownership",
+      "title": "Serve the Google site verification file at the path /google0e657d46cb230404.html. The file must be accessible at the website root and contain exactly the content: 'google-site-verification: google0e657d46cb230404.html' so that Google Search Console can verify site ownership.",
       "reqIds": [
-        "REQ-2"
+        "REQ-1"
       ],
       "version": 1
     }
@@ -20,14 +22,13 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "Investigate and fix the Google access issue that persists after Version 9. The backend currently makes HTTP outcalls — ensure the search backend is fully migrated away from any Google endpoints to DuckDuckGo, with no remaining references to Google APIs, OAuth, or Google domains in the Motoko actor or frontend hooks.",
-      "reqIds": [
-        "REQ-1"
-      ],
+      "summary": "Upload google0e657d46cb230404.html Google site verification file to the website root",
+      "reqIds": [],
       "status": "pending"
     }
   ],
-  "projectName": "Fix persistent Google access/OAuth issue",
+  "gameProjectType": "none",
+  "projectName": "Custom Search",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

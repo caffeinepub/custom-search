@@ -2,10 +2,10 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-audit-the-frontend-search-hook-usesearch-ts-and-searchinterface-component-to-ensure-no-google-specific-urls-api-keys-or-oauth-flows-are-referenced-remove-or-replace-any-remaining-google-references",
-      "featureTitle": "Audit the frontend search hook (useSearch.ts) and SearchInterface component to ensure no Google-specific URLs, API keys, or OAuth flows are referenced. Remove or replace any remaining Google references.",
+      "featureId": "feature-serve-the-google-site-verification-file-at-the-path-google0e657d46cb230404-html-the-file-must-be-accessible-at-the-website-root-and-contain-exactly-the-content-google-site-verification-google0e657d46cb230404-html-so-that-google-search-console-can-verify-site-ownership",
+      "featureTitle": "Serve the Google site verification file at the path /google0e657d46cb230404.html. The file must be accessible at the website root and contain exactly the content: 'google-site-verification: google0e657d46cb230404.html' so that Google Search Console can verify site ownership.",
       "files": [
-        "frontend/src/hooks/useSearch.ts"
+        "frontend/public/google0e657d46cb230404.html"
       ],
       "components": [
         "http-outcalls@3.0.0",
@@ -16,7 +16,7 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-2"
+        "REQ-1"
       ],
       "confidence": "high"
     }

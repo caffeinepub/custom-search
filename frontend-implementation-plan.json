@@ -1,26 +1,21 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Fix persistent Google access/OAuth issue",
+  "title": "Add Google site verification HTML file to website root",
   "requirements": [
     {
-      "id": "REQ-2",
-      "summary": "Audit and remove all Google API references from frontend search hook and SearchInterface component",
+      "id": "REQ-1",
+      "summary": "Serve the Google site verification file at /google0e657d46cb230404.html so Google Search Console can verify site ownership",
       "acceptanceCriteria": [
-        "No Google API URLs or OAuth references exist in frontend source files",
-        "Search results render correctly from DuckDuckGo responses",
-        "No access-denied error messages appear in the search UI"
+        "Navigating to /google0e657d46cb230404.html returns a valid HTML page",
+        "The page content satisfies Google Search Console's site verification check",
+        "The file is placed in the frontend/public directory so it is served as a static asset at the website root"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/hooks/useSearch.ts",
-          "operation": "modify",
-          "description": "Audit the useSearch hook to remove any remaining Google API URLs, OAuth tokens, or Google-specific query parameters. Ensure all search requests use only the backend actor's search method, which routes exclusively to DuckDuckGo. Verify error handling does not reference Google services."
-        },
-        {
-          "path": "frontend/src/components/SearchInterface.tsx",
-          "operation": "modify",
-          "description": "Review and remove any hardcoded Google API endpoints, API keys, or OAuth flows from the SearchInterface component. Ensure the component only calls useSearch hook and displays DuckDuckGo results. Verify no Google domain references exist in error messages or fallback UI."
+          "path": "frontend/public/google0e657d46cb230404.html",
+          "operation": "create",
+          "description": "Create the Google site verification HTML file containing exactly 'google-site-verification: google0e657d46cb230404.html' so it is served as a static asset at /google0e657d46cb230404.html"
         }
       ]
     }

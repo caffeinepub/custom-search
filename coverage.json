@@ -1,43 +1,34 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-03-02T19:14:45.427Z",
+  "generatedAt": "2026-03-02T21:38:12.901Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 2,
+    "total": 1,
     "implemented": 1,
     "items": [
       {
         "id": "REQ-1",
-        "summary": "Investigate and fix the Google access issue that persists after Version 9. The backend currently makes HTTP outcalls — ensure the search backend is fully migrated away from any Google endpoints to DuckDuckGo, with no remaining references to Google APIs, OAuth, or Google domains in the Motoko actor or frontend hooks.",
-        "status": "unknown",
-        "plannedFiles": [],
-        "matchedFiles": []
-      },
-      {
-        "id": "REQ-2",
-        "summary": "Audit the frontend search hook (useSearch.ts) and SearchInterface component to ensure no Google-specific URLs, API keys, or OAuth flows are referenced. Remove or replace any remaining Google references.",
+        "summary": "Serve the Google site verification file at the path /google0e657d46cb230404.html. The file must be accessible at the website root and contain exactly the content: 'google-site-verification: google0e657d46cb230404.html' so that Google Search Console can verify site ownership.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/hooks/useSearch.ts",
-          "frontend/src/components/SearchInterface.tsx"
+          "frontend/public/google0e657d46cb230404.html"
         ],
         "matchedFiles": [
-          "frontend/src/hooks/useSearch.ts"
+          "frontend/public/google0e657d46cb230404.html"
         ]
       }
     ]
   },
   "changedFiles": [
-    "backend/main.mo",
     "build-request.json",
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/src/hooks/useSearch.ts",
+    "frontend/public/google0e657d46cb230404.html",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

@@ -1,53 +1,36 @@
 {
   "kind": "build_request",
-  "title": "Fix persistent Google access/OAuth issue",
-  "priority": "high",
+  "title": "Add Google site verification HTML file to website root",
+  "projectName": "Custom Search",
+  "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Investigate and fix the Google access issue that persists after Version 9. The backend currently makes HTTP outcalls — ensure the search backend is fully migrated away from any Google endpoints to DuckDuckGo, with no remaining references to Google APIs, OAuth, or Google domains in the Motoko actor or frontend hooks.",
-      "target": "backend",
-      "source": {
-        "messageIds": [
-          "msg-3"
-        ],
-        "quotes": [
-          "The access issue is not gone"
-        ]
-      },
-      "acceptanceCriteria": [
-        "No HTTP outcalls to any Google domain (google.com, googleapis.com, etc.) remain in the backend actor",
-        "All search queries are routed exclusively to the DuckDuckGo API endpoint",
-        "Search results load successfully without any access-denied or OAuth errors"
-      ]
-    },
-    {
-      "id": "REQ-2",
-      "text": "Audit the frontend search hook (useSearch.ts) and SearchInterface component to ensure no Google-specific URLs, API keys, or OAuth flows are referenced. Remove or replace any remaining Google references.",
+      "text": "Serve the Google site verification file at the path /google0e657d46cb230404.html. The file must be accessible at the website root and contain exactly the content: 'google-site-verification: google0e657d46cb230404.html' so that Google Search Console can verify site ownership.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-3"
+          "msg-last"
         ],
         "quotes": [
-          "The access issue is not gone"
+          "google-site-verification: google0e657d46cb230404.html upload this html file to the website"
         ]
       },
       "acceptanceCriteria": [
-        "No Google API URLs or OAuth references exist in frontend source files",
-        "Search results render correctly from DuckDuckGo responses",
-        "No access-denied error messages appear in the search UI"
+        "Navigating to /google0e657d46cb230404.html returns a valid HTML page",
+        "The page content satisfies Google Search Console's site verification check",
+        "The file is placed in the frontend/public directory so it is served as a static asset at the website root"
       ]
     }
   ],
   "constraints": [
-    "Do not modify files under frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, or frontend/src/components/ui",
-    "All Motoko logic must remain in a single actor in backend/main.mo"
+    "The verification file must be served as a static file at the exact path /google0e657d46cb230404.html — do not alter its filename or path",
+    "Do not modify any files listed under frontend.immutablePaths"
   ],
   "nonGoals": [
-    "Changing the visual design or layout of the search UI",
-    "Adding new search providers beyond DuckDuckGo",
-    "Modifying authentication or Internet Identity flows"
+    "Modifying backend logic or Motoko code",
+    "Changing the Google OAuth consent screen configuration",
+    "Adding any new UI components or pages beyond the static verification file"
   ],
   "imageRequirements": {
     "required": [],
