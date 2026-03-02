@@ -1,0 +1,90 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Regenerate full-stack DuckDuckGo search application",
+  "requirements": [
+    {
+      "id": "REQ-2",
+      "summary": "Implement the useSearch custom hook with query encoding, JSON validation, and ICP error extraction",
+      "acceptanceCriteria": [
+        "Hook accepts a query string and returns { results, isLoading, error, search }",
+        "Query string is URL-encoded before being sent to the backend",
+        "JSON response is validated and parsed; invalid JSON surfaces a user-friendly error",
+        "ICP canister trap messages are extracted and displayed as readable errors",
+        "Loading state is true while the backend call is in flight"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useSearch.ts",
+          "operation": "modify",
+          "description": "Update the useSearch hook to call the backend actor's search function (or fetchSearchResults if search is not available), URL-encode the query parameter before sending it to the backend, validate and parse the returned JSON string, extract meaningful error messages from ICP canister trap responses, and expose { results, isLoading, error, search } state to consuming components. Ensure the hook handles loading state correctly while the backend call is in flight and surfaces user-friendly errors for invalid JSON or backend failures."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Implement the SearchInterface component with form handling, state display, topic flattening, and InAppBrowser integration",
+      "acceptanceCriteria": [
+        "Search form has a text input and submit button",
+        "A loading spinner or indicator is shown while results are loading",
+        "An error message is displayed when the search fails",
+        "An empty state message is shown when no results are returned",
+        "DuckDuckGo RelatedTopics groups are flattened into a single list of result items",
+        "Clicking a result opens the link inside the InAppBrowser overlay"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/SearchInterface.tsx",
+          "operation": "modify",
+          "description": "Update the SearchInterface component to render a search form with a text input and submit button, handle form submission by calling the useSearch hook, display a loading spinner or indicator while isLoading is true, show an error message when an error occurs, display an empty state message when no results are returned, flatten DuckDuckGo RelatedTopics groups (which may contain nested Topics arrays) into a single flat list of result items, and open result links by passing the URL to the InAppBrowser overlay component when a result is clicked."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Implement the InAppBrowser component as a fullscreen modal with iframe, loading state, and close/fallback controls",
+      "acceptanceCriteria": [
+        "Modal covers the full viewport when open",
+        "Iframe loads the provided URL",
+        "A loading spinner is shown until the iframe fires its onLoad event",
+        "A close button dismisses the overlay",
+        "A fallback 'Open in new tab' link is always visible in the header bar"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/InAppBrowser.tsx",
+          "operation": "modify",
+          "description": "Update the InAppBrowser component to render as a fullscreen modal overlay that covers the entire viewport when open, display the provided URL in an iframe, show a loading spinner until the iframe fires its onLoad event, include a close button in the header bar that dismisses the overlay, display the current URL in the header bar, and provide a fallback 'Open in new tab' link that is always visible in the header bar and opens the URL in a new browser tab."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Apply cohesive dark-themed visual design with OKLCH color system and card-based layout",
+      "acceptanceCriteria": [
+        "Global CSS defines OKLCH custom properties for background, foreground, and UI component color tokens",
+        "Tailwind config maps CSS variables to semantic color tokens",
+        "Search results are rendered in visually distinct cards",
+        "Typography uses a clean sans-serif font",
+        "The layout is centered and responsive"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Update the global CSS to define OKLCH-based CSS custom properties for a dark-themed color system including background, foreground, and UI component color tokens (primary, secondary, accent, muted, destructive, border, input, ring, card, popover). Ensure the dark theme uses a dark background with high-contrast foreground text and that all color tokens are consistent throughout the application. Verify that Tailwind directives are imported and any necessary global typography or animation utilities are defined."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Update the Tailwind configuration to map the OKLCH CSS custom properties defined in index.css to semantic color tokens (background, foreground, primary, secondary, accent, muted, destructive, border, input, ring, card, popover, etc.). Ensure the color system supports the dark theme and that typography uses a clean sans-serif font family. Verify that any necessary plugins (typography, container-queries, animate) are registered and that extended utilities (border-radius, shadows, keyframes) support the card-based layout."
+        },
+        {
+          "path": "frontend/src/components/SearchInterface.tsx",
+          "operation": "modify",
+          "description": "Update the SearchInterface component to render search results in visually distinct cards using Tailwind card-related utility classes (e.g., bg-card, border-border, rounded-md). Ensure the layout is centered and responsive, uses the defined color tokens for backgrounds and borders, and applies clean sans-serif typography for all text elements. Verify that the card-based design is cohesive with the overall dark-themed visual style."
+        }
+      ]
+    }
+  ]
+}

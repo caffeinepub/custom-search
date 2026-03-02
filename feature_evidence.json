@@ -1,0 +1,83 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-implement-the-usesearch-custom-hook-that-calls-the-backend-actor-s-search-function-url-encodes-the-query-validates-the-json-response-extracts-meaningful-error-messages-from-icp-canister-traps-and-exposes-loading-error-and-results-state-to-consuming-components",
+      "featureTitle": "Implement the useSearch custom hook that calls the backend actor's search function, URL-encodes the query, validates the JSON response, extracts meaningful error messages from ICP canister traps, and exposes loading, error, and results state to consuming components.",
+      "files": [
+        "frontend/src/hooks/useSearch.ts"
+      ],
+      "components": [
+        "http-outcalls@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-the-searchinterface-component-that-renders-a-search-form-handles-submission-displays-loading-error-empty-states-flattens-duckduckgo-topic-groups-into-a-flat-results-list-and-opens-result-links-in-the-inappbrowser-overlay-component",
+      "featureTitle": "Implement the SearchInterface component that renders a search form, handles submission, displays loading/error/empty states, flattens DuckDuckGo topic groups into a flat results list, and opens result links in the InAppBrowser overlay component.",
+      "files": [
+        "frontend/src/components/SearchInterface.tsx"
+      ],
+      "components": [
+        "http-outcalls@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-the-inappbrowser-component-as-a-fullscreen-modal-overlay-that-displays-an-external-url-in-an-iframe-includes-a-header-bar-with-the-url-a-loading-spinner-while-the-iframe-loads-a-close-button-to-dismiss-the-overlay-and-a-fallback-link-to-open-the-url-in-a-new-tab",
+      "featureTitle": "Implement the InAppBrowser component as a fullscreen modal overlay that displays an external URL in an iframe, includes a header bar with the URL, a loading spinner while the iframe loads, a close button to dismiss the overlay, and a fallback link to open the URL in a new tab.",
+      "files": [
+        "frontend/src/components/InAppBrowser.tsx"
+      ],
+      "components": [
+        "http-outcalls@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-apply-a-cohesive-dark-themed-visual-design-across-the-entire-application-using-a-dark-background-with-high-contrast-foreground-text-clean-sans-serif-typography-and-a-minimal-card-based-layout-for-search-results-define-oklch-based-css-custom-properties-for-the-color-system-and-ensure-light-dark-theme-tokens-are-consistent-throughout",
+      "featureTitle": "Apply a cohesive dark-themed visual design across the entire application using a dark background with high-contrast foreground text, clean sans-serif typography, and a minimal card-based layout for search results. Define OKLCH-based CSS custom properties for the color system and ensure light/dark theme tokens are consistent throughout.",
+      "files": [
+        "frontend/src/components/SearchInterface.tsx",
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "http-outcalls@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

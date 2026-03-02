@@ -1,0 +1,86 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-03-02T18:55:48.746Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 5,
+    "implemented": 4,
+    "items": [
+      {
+        "id": "REQ-1",
+        "summary": "Implement a Motoko backend actor that performs HTTP outcalls to the DuckDuckGo API (https://api.duckduckgo.com/?q={query}&format=json) to fetch search results, parses and returns the JSON response, and handles HTTP errors gracefully with descriptive error messages.",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-2",
+        "summary": "Implement the useSearch custom hook that calls the backend actor's search function, URL-encodes the query, validates the JSON response, extracts meaningful error messages from ICP canister traps, and exposes loading, error, and results state to consuming components.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/hooks/useSearch.ts"
+        ],
+        "matchedFiles": [
+          "frontend/src/hooks/useSearch.ts"
+        ]
+      },
+      {
+        "id": "REQ-3",
+        "summary": "Implement the SearchInterface component that renders a search form, handles submission, displays loading/error/empty states, flattens DuckDuckGo topic groups into a flat results list, and opens result links in the InAppBrowser overlay component.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/SearchInterface.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/SearchInterface.tsx"
+        ]
+      },
+      {
+        "id": "REQ-4",
+        "summary": "Implement the InAppBrowser component as a fullscreen modal overlay that displays an external URL in an iframe, includes a header bar with the URL, a loading spinner while the iframe loads, a close button to dismiss the overlay, and a fallback link to open the URL in a new tab.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/InAppBrowser.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/InAppBrowser.tsx"
+        ]
+      },
+      {
+        "id": "REQ-5",
+        "summary": "Apply a cohesive dark-themed visual design across the entire application using a dark background with high-contrast foreground text, clean sans-serif typography, and a minimal card-based layout for search results. Define OKLCH-based CSS custom properties for the color system and ensure light/dark theme tokens are consistent throughout.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/index.css",
+          "frontend/tailwind.config.js",
+          "frontend/src/components/SearchInterface.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/index.css",
+          "frontend/tailwind.config.js",
+          "frontend/src/components/SearchInterface.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/components/InAppBrowser.tsx",
+    "frontend/src/components/SearchInterface.tsx",
+    "frontend/src/hooks/useSearch.ts",
+    "frontend/src/index.css",
+    "frontend/src/utils/urlFormatter.tsx",
+    "frontend/tailwind.config.js",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

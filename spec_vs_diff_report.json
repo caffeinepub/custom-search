@@ -1,0 +1,36 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-03-02T18:55:48.742Z",
+  "summary": "The diff implements the frontend components (InAppBrowser, SearchInterface, useSearch hook, CSS, Tailwind config) satisfying REQ-2 through REQ-5. However, REQ-1 (the Motoko backend actor in backend/main.mo) is entirely absent from the diff — no backend file was added or modified.",
+  "missing_requirements": [
+    {
+      "id": "REQ-1",
+      "requirement": "Implement a Motoko backend actor that performs HTTP outcalls to the DuckDuckGo API to fetch search results, parses and returns the JSON response, and handles HTTP errors gracefully with descriptive error messages.",
+      "reason": "No backend/main.mo file (or any Motoko file) appears in the diff. The diff only modifies frontend files. None of the acceptance criteria for REQ-1 (exposed search function, HTTP outcall to DuckDuckGo, error handling, raw JSON return) can be verified.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "urlFormatter utility with linkifyText and isUrl functions",
+      "reason": "The build request does not mention a URL-linkification utility or a urlFormatter module. This utility was added beyond the stated requirements.",
+      "evidence": [
+        "frontend/src/utils/urlFormatter.tsx"
+      ]
+    }
+  ],
+  "confidence": 0.9,
+  "changed_files": [
+    "frontend-file-summaries.txt",
+    "frontend/src/components/InAppBrowser.tsx",
+    "frontend/src/components/SearchInterface.tsx",
+    "frontend/src/hooks/useSearch.ts",
+    "frontend/src/index.css",
+    "frontend/src/utils/urlFormatter.tsx",
+    "frontend/tailwind.config.js",
+    "project_state.json"
+  ]
+}

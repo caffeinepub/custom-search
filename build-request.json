@@ -1,0 +1,122 @@
+{
+  "kind": "build_request",
+  "title": "Regenerate full-stack DuckDuckGo search application",
+  "projectName": "ICP Search",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Implement a Motoko backend actor that performs HTTP outcalls to the DuckDuckGo API (https://api.duckduckgo.com/?q={query}&format=json) to fetch search results, parses and returns the JSON response, and handles HTTP errors gracefully with descriptive error messages.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Re generate code"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Actor exposes a search function that accepts a query string and returns a result type containing either the raw JSON string or an error message",
+        "HTTP outcall is made to DuckDuckGo API with the URL-encoded query parameter",
+        "Failed HTTP requests return a descriptive error string rather than trapping",
+        "Successful responses return the raw JSON body"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Implement the useSearch custom hook that calls the backend actor's search function, URL-encodes the query, validates the JSON response, extracts meaningful error messages from ICP canister traps, and exposes loading, error, and results state to consuming components.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Re generate code"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Hook accepts a query string and returns { results, isLoading, error, search }",
+        "Query string is URL-encoded before being sent to the backend",
+        "JSON response is validated and parsed; invalid JSON surfaces a user-friendly error",
+        "ICP canister trap messages are extracted and displayed as readable errors",
+        "Loading state is true while the backend call is in flight"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Implement the SearchInterface component that renders a search form, handles submission, displays loading/error/empty states, flattens DuckDuckGo topic groups into a flat results list, and opens result links in the InAppBrowser overlay component.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Re generate code"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Search form has a text input and submit button",
+        "A loading spinner or indicator is shown while results are loading",
+        "An error message is displayed when the search fails",
+        "An empty state message is shown when no results are returned",
+        "DuckDuckGo RelatedTopics groups are flattened into a single list of result items",
+        "Clicking a result opens the link inside the InAppBrowser overlay"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Implement the InAppBrowser component as a fullscreen modal overlay that displays an external URL in an iframe, includes a header bar with the URL, a loading spinner while the iframe loads, a close button to dismiss the overlay, and a fallback link to open the URL in a new tab.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Re generate code"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Modal covers the full viewport when open",
+        "Iframe loads the provided URL",
+        "A loading spinner is shown until the iframe fires its onLoad event",
+        "A close button dismisses the overlay",
+        "A fallback 'Open in new tab' link is always visible in the header bar"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Apply a cohesive dark-themed visual design across the entire application using a dark background with high-contrast foreground text, clean sans-serif typography, and a minimal card-based layout for search results. Define OKLCH-based CSS custom properties for the color system and ensure light/dark theme tokens are consistent throughout.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Re generate code"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Global CSS defines OKLCH custom properties for background, foreground, and UI component color tokens",
+        "Tailwind config maps CSS variables to semantic color tokens",
+        "Search results are rendered in visually distinct cards",
+        "Typography uses a clean sans-serif font",
+        "The layout is centered and responsive"
+      ]
+    }
+  ],
+  "constraints": [
+    "All Motoko logic must remain in the single backend/main.mo actor file",
+    "Do not modify files under frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, or frontend/src/components/ui"
+  ],
+  "nonGoals": [
+    "User authentication or Internet Identity login flows",
+    "Persistent search history stored on-chain",
+    "Real-time or streaming search results",
+    "Multiple backend canisters or microservices"
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}
