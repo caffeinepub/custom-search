@@ -1,34 +1,22 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "Project involves uploading a Google site verification HTML file (google0e657d46cb230404.html) to a website, likely to verify ownership in Google Search Console.",
-  "architectural_notes": [
-    "Google site verification file (google0e657d46cb230404.html) must be served at the website root for Google Search Console verification"
-  ],
-  "known_issues": [
-    "Google OAuth consent screen is in Testing mode, causing 'cannot access the page' errors for non-whitelisted users"
-  ],
+  "summary": "New project",
+  "architectural_notes": [],
+  "known_issues": [],
   "isFixRequest": false,
   "existing_features": [
     {
-      "id": "feature-serve-the-google-site-verification-file-at-the-path-google0e657d46cb230404-html-the-file-must-be-accessible-at-the-website-root-and-contain-exactly-the-content-google-site-verification-google0e657d46cb230404-html-so-that-google-search-console-can-verify-site-ownership",
-      "title": "Serve the Google site verification file at the path /google0e657d46cb230404.html. The file must be accessible at the website root and contain exactly the content: 'google-site-verification: google0e657d46cb230404.html' so that Google Search Console can verify site ownership.",
+      "id": "feature-rebuild-and-redeploy-the-current-application-as-a-new-version-preserving-all-existing-functionality-including-the-duckduckgo-search-interface-in-app-browser-modal-error-handling-and-google-search-console-verification-file",
+      "title": "Rebuild and redeploy the current application as a new version, preserving all existing functionality including the DuckDuckGo search interface, in-app browser modal, error handling, and Google Search Console verification file.",
       "reqIds": [
         "REQ-1"
       ],
       "version": 1
     }
   ],
-  "new_feature_requests": [
-    {
-      "id": "AR-1",
-      "summary": "Upload google0e657d46cb230404.html Google site verification file to the website root",
-      "reqIds": [],
-      "status": "pending"
-    }
-  ],
-  "gameProjectType": "none",
-  "projectName": "Custom Search",
+  "new_feature_requests": [],
+  "projectName": "Create new version (rebuild/refresh current state)",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

@@ -101,33 +101,33 @@ export default function InAppBrowser({ url, onClose }: InAppBrowserProps) {
               rel="noopener noreferrer"
               className="w-full"
             >
-              <Button className="w-full gap-2" size="lg">
+              <Button className="w-full gap-2 rounded-xl" size="lg">
                 <ExternalLink className="w-4 h-4" />
                 Open in new tab
               </Button>
             </a>
-            <Button
-              variant="ghost"
-              size="sm"
+            <button
+              type="button"
               onClick={onClose}
-              className="text-muted-foreground"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
               Go back to results
-            </Button>
+            </button>
           </div>
         </div>
       )}
 
-      {/* iframe — hidden when blocked to avoid showing the browser's own error page */}
-      <iframe
-        key={url}
-        src={url}
-        title="In-app browser"
-        className={`flex-1 w-full border-none ${isBlocked ? 'hidden' : ''}`}
-        onLoad={handleLoad}
-        onError={handleError}
-        sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
-      />
+      {/* iframe */}
+      {!isBlocked && (
+        <iframe
+          src={url}
+          className="flex-1 w-full border-none"
+          onLoad={handleLoad}
+          onError={handleError}
+          title="In-app browser"
+          sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
+        />
+      )}
     </div>
   );
 }

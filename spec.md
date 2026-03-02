@@ -1,9 +1,10 @@
 # Specification
 
 ## Summary
-**Goal:** Add a Google Search Console site verification HTML file to the website root.
+**Goal:** Rebuild and redeploy the current application as a new version without any functional changes.
 
 **Planned changes:**
-- Add `google0e657d46cb230404.html` to the `frontend/public` directory with the exact content: `google-site-verification: google0e657d46cb230404.html`
+- Rebuild the existing application preserving all current functionality
+- Redeploy as a new version
 
-**User-visible outcome:** The verification file is accessible at `/google0e657d46cb230404.html`, allowing Google Search Console to verify site ownership.
+**User-visible outcome:** The application continues to work exactly as before, with the DuckDuckGo search interface, in-app browser modal, error/loading states, and Google Search Console verification file all functioning as expected.

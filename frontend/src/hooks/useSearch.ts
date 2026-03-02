@@ -10,6 +10,34 @@ export function useSearch() {
   const extractErrorMessage = (err: unknown): string => {
     if (!err) return 'An unknown error occurred';
 
+    const rawString = typeof err === 'string' ? err : JSON.stringify(err);
+    const msgString =
+      typeof err === 'object' && err !== null && typeof (err as Record<string, unknown>).message === 'string'
+        ? (err as Record<string, unknown>).message as string
+        : rawString;
+
+    // Check for IC0508 — canister is stopped
+    if (
+      msgString.includes('IC0508') ||
+      msgString.toLowerCase().includes('is stopped') ||
+      msgString.toLowerCase().includes('canister is stopped')
+    ) {
+      return 'The search service is currently unavailable (the backend canister is stopped). Please try again later or contact support.';
+    }
+
+    // Check for other ICP error codes
+    const icErrorMatch = msgString.match(/IC\d{4}/);
+    if (icErrorMatch) {
+      const code = icErrorMatch[0];
+      // IC0503 = canister out of cycles, IC0504 = canister rejected, IC0505 = canister did not reply
+      if (code === 'IC0503') {
+        return 'The search service is out of cycles and cannot process requests right now.';
+      }
+      if (code === 'IC0504' || code === 'IC0505') {
+        return 'The search service did not respond. Please try again in a moment.';
+      }
+    }
+
     if (typeof err === 'object') {
       const e = err as Record<string, unknown>;
 

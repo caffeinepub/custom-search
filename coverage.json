@@ -1,7 +1,7 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-03-02T21:38:12.901Z",
+  "generatedAt": "2026-03-02T22:14:36.492Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
@@ -12,13 +12,26 @@
     "items": [
       {
         "id": "REQ-1",
-        "summary": "Serve the Google site verification file at the path /google0e657d46cb230404.html. The file must be accessible at the website root and contain exactly the content: 'google-site-verification: google0e657d46cb230404.html' so that Google Search Console can verify site ownership.",
+        "summary": "Rebuild and redeploy the current application as a new version, preserving all existing functionality including the DuckDuckGo search interface, in-app browser modal, error handling, and Google Search Console verification file.",
         "status": "implemented",
         "plannedFiles": [
+          "frontend/src/App.tsx",
+          "frontend/src/components/SearchInterface.tsx",
+          "frontend/src/components/InAppBrowser.tsx",
+          "frontend/src/hooks/useSearch.ts",
+          "frontend/src/hooks/useActor.ts",
+          "frontend/src/hooks/useInternetIdentity.ts",
+          "frontend/src/utils/urlFormatter.tsx",
+          "frontend/src/index.css",
+          "frontend/tailwind.config.js",
+          "frontend/src/main.tsx",
+          "frontend/index.html",
           "frontend/public/google0e657d46cb230404.html"
         ],
         "matchedFiles": [
-          "frontend/public/google0e657d46cb230404.html"
+          "frontend/src/components/InAppBrowser.tsx",
+          "frontend/src/index.css",
+          "frontend/tailwind.config.js"
         ]
       }
     ]
@@ -28,7 +41,9 @@
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/public/google0e657d46cb230404.html",
+    "frontend/src/components/InAppBrowser.tsx",
+    "frontend/src/index.css",
+    "frontend/tailwind.config.js",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

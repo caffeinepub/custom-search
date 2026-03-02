@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Search, Loader2, ExternalLink, AlertCircle, WifiOff } from 'lucide-react';
+import { Search, Loader2, ExternalLink, AlertCircle, WifiOff, ServerCrash } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -31,6 +31,28 @@ interface SearchResult {
   Heading?: string;
   RelatedTopics?: DuckDuckGoTopic[];
   Results?: DuckDuckGoResult[];
+}
+
+function getErrorIcon(errorMessage: string | null) {
+  if (!errorMessage) return <AlertCircle className="h-4 w-4" />;
+  if (
+    errorMessage.toLowerCase().includes('stopped') ||
+    errorMessage.toLowerCase().includes('unavailable') ||
+    errorMessage.toLowerCase().includes('cycles')
+  ) {
+    return <ServerCrash className="h-4 w-4" />;
+  }
+  return <AlertCircle className="h-4 w-4" />;
+}
+
+function getErrorTitle(errorMessage: string | null): string {
+  if (!errorMessage) return 'Search failed';
+  if (errorMessage.toLowerCase().includes('stopped')) return 'Service unavailable';
+  if (errorMessage.toLowerCase().includes('cycles')) return 'Service out of resources';
+  if (errorMessage.toLowerCase().includes('node provider') || errorMessage.toLowerCase().includes('http outcall')) {
+    return 'Environment limitation';
+  }
+  return 'Search failed';
 }
 
 export default function SearchInterface() {
@@ -151,8 +173,8 @@ export default function SearchInterface() {
           {/* Error State */}
           {error && !isLoading && (
             <Alert variant="destructive" className="mb-6 rounded-xl">
-              <AlertCircle className="h-4 w-4" />
-              <AlertTitle>Search failed</AlertTitle>
+              {getErrorIcon(error)}
+              <AlertTitle>{getErrorTitle(error)}</AlertTitle>
               <AlertDescription className="mt-1">{error}</AlertDescription>
             </Alert>
           )}

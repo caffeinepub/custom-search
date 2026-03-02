@@ -32,3 +32,4 @@ actor {
     await fetchSearchResults(searchQuery);
   };
 };
+
