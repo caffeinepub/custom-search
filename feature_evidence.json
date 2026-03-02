@@ -1,25 +1,4 @@
 {
   "kind": "feature_evidence_report",
-  "features": [
-    {
-      "featureId": "feature-update-all-references-to-the-application-domain-across-the-project-to-use-securelytime-com-including-any-configuration-files-html-meta-tags-canonical-urls-site-verification-files-and-any-hardcoded-domain-strings-in-frontend-or-backend-code",
-      "featureTitle": "Update all references to the application domain across the project to use 'securelytime.com', including any configuration files, HTML meta tags, canonical URLs, site verification files, and any hardcoded domain strings in frontend or backend code.",
-      "files": [
-        "frontend/index.html",
-        "frontend/src/components/SearchInterface.tsx"
-      ],
-      "components": [
-        "http-outcalls@3.0.0",
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-1"
-      ],
-      "confidence": "high"
-    }
-  ]
+  "features": []
 }

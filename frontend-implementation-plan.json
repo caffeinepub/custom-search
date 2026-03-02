@@ -1,46 +1,36 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Update domain to securelytime.com",
+  "title": "Production deployment of SecurelyTime",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Update all domain references to securelytime.com across frontend configuration, HTML meta tags, and source code",
+      "summary": "Deploy the current version of the SecurelyTime application to production on the Internet Computer network",
       "acceptanceCriteria": [
-        "All domain references in the codebase point to securelytime.com",
-        "The index.html or any HTML meta/canonical tags reference securelytime.com if applicable",
-        "No references to any previous domain remain in configuration or source files"
+        "The application is successfully deployed to the IC mainnet",
+        "The frontend is accessible via the securelytime.com domain",
+        "The backend canister is live and responding to search queries"
       ],
       "file_operations": [
         {
           "path": "frontend/index.html",
           "operation": "modify",
-          "description": "Update any domain references in HTML meta tags, canonical URLs, or Open Graph tags to use securelytime.com"
+          "description": "Verify production meta tags, canonical URL, and Open Graph tags reference the correct securelytime.com domain for mainnet deployment"
         },
         {
-          "path": "frontend/public/google0e657d46cb230404.html",
+          "path": "frontend/src/hooks/useActor.ts",
           "operation": "modify",
-          "description": "Update Google Search Console verification file to reference securelytime.com if it contains any domain-specific content or meta tags"
+          "description": "Verify the backend canister connection configuration uses the production mainnet canister ID and host rather than local development settings"
         },
         {
           "path": "frontend/src/components/SearchInterface.tsx",
           "operation": "modify",
-          "description": "Search for and replace any hardcoded domain strings with securelytime.com"
+          "description": "Verify the search interface correctly calls the backend search method and handles production error states appropriately"
         },
         {
-          "path": "frontend/src/components/InAppBrowser.tsx",
+          "path": "frontend/public/google0e657d46cb230404.html",
           "operation": "modify",
-          "description": "Update any domain references in error messages, fallback text, or CSP-related comments to use securelytime.com"
-        },
-        {
-          "path": "frontend/src/App.tsx",
-          "operation": "modify",
-          "description": "Update any hardcoded domain strings or configuration references to securelytime.com"
-        },
-        {
-          "path": "frontend/src/main.tsx",
-          "operation": "modify",
-          "description": "Update any domain references in application initialization or metadata to securelytime.com"
+          "description": "Verify the Google Search Console verification file is correctly deployed and accessible at its verification URL path for domain ownership confirmation"
         }
       ]
     }

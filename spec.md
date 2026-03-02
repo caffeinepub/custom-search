@@ -1,11 +1,10 @@
 # Specification
 
 ## Summary
-**Goal:** Update all domain references across the project to use `securelytime.com`.
+**Goal:** Deploy the current SecurelyTime application to production on the Internet Computer (IC) mainnet.
 
 **Planned changes:**
-- Replace all hardcoded domain strings in frontend and backend code with `securelytime.com`
-- Update HTML meta tags, canonical URLs, and any site verification files to reference `securelytime.com`
-- Update any configuration files that contain the previous domain
+- Deploy the frontend canister to the IC mainnet, accessible via securelytime.com
+- Deploy the backend canister to the IC mainnet so it responds to search queries
 
-**User-visible outcome:** The application consistently references `securelytime.com` as its domain across all configurations, meta tags, and source files.
+**User-visible outcome:** The SecurelyTime application is live on the Internet Computer network and accessible to the public at securelytime.com, with the backend fully operational.

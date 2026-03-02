@@ -1,36 +1,36 @@
 {
   "kind": "build_request",
-  "title": "Update domain to securelytime.com",
-  "projectName": "Securely Time",
-  "priority": "normal",
+  "title": "Production deployment of SecurelyTime",
+  "projectName": "SecurelyTime",
+  "priority": "high",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Update all references to the application domain across the project to use 'securelytime.com', including any configuration files, HTML meta tags, canonical URLs, site verification files, and any hardcoded domain strings in frontend or backend code.",
+      "text": "Deploy the current version of the SecurelyTime application to production on the Internet Computer network.",
       "target": "both",
       "source": {
         "messageIds": [
-          "msg-3"
+          "msg-recent"
         ],
         "quotes": [
-          "Change domain to securelytime.com"
+          "Go live"
         ]
       },
       "acceptanceCriteria": [
-        "All domain references in the codebase point to securelytime.com",
-        "The index.html or any HTML meta/canonical tags reference securelytime.com if applicable",
-        "No references to any previous domain remain in configuration or source files"
+        "The application is successfully deployed to the IC mainnet",
+        "The frontend is accessible via the securelytime.com domain",
+        "The backend canister is live and responding to search queries"
       ]
     }
   ],
   "constraints": [
-    "Do not modify files listed in frontend.immutablePaths",
-    "Do not alter core application logic unrelated to the domain change"
+    "Do not modify any application logic or UI during this deployment",
+    "Preserve the existing domain configuration for securelytime.com"
   ],
   "nonGoals": [
-    "DNS configuration or hosting provider setup",
-    "SSL certificate provisioning",
-    "Any new feature development"
+    "Adding new features",
+    "Changing the UI or backend logic",
+    "Modifying domain settings"
   ],
   "imageRequirements": {
     "required": [],
