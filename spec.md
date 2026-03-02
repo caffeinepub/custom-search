@@ -1,10 +1,11 @@
 # Specification
 
 ## Summary
-**Goal:** Fix the "access denied" issue by replacing Google with DuckDuckGo as the search backend, and improve the in-app browser to handle iframe load failures gracefully.
+**Goal:** Remove all remaining Google API, OAuth, and domain references from both the backend and frontend, ensuring all search traffic routes exclusively through DuckDuckGo.
 
 **Planned changes:**
-- Update the Motoko backend actor to construct HTTP outcall URLs targeting the DuckDuckGo API (`api.duckduckgo.com`) and remove any Google-related URLs.
-- Update the `InAppBrowser` component to detect iframe load errors (e.g., X-Frame-Options blocks) and display a user-friendly error message with an "Open in new tab" button as a fallback.
+- Audit and remove any HTTP outcalls to Google domains (google.com, googleapis.com, etc.) from the backend Motoko actor, replacing them with DuckDuckGo API calls
+- Audit `useSearch.ts` and `SearchInterface` component to remove any Google-specific URLs, API keys, or OAuth flow references
+- Ensure all search queries are routed exclusively to the DuckDuckGo API endpoint in both backend and frontend
 
-**User-visible outcome:** Searching no longer redirects to a Google access-denied page — results come from DuckDuckGo. If a page cannot be displayed inside the in-app browser, the user sees a clear error message and a button to open the link in a new tab.
+**User-visible outcome:** Search results load successfully from DuckDuckGo with no access-denied or OAuth-related errors appearing in the search UI.

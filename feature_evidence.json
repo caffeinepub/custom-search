@@ -2,10 +2,10 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-in-the-inappbrowser-component-when-an-iframe-fails-to-load-or-is-blocked-e-g-x-frame-options-denial-display-a-user-friendly-message-with-a-button-to-open-the-url-in-a-new-tab-instead-of-showing-a-broken-or-empty-iframe-detect-iframe-load-errors-and-show-a-fallback-ui-immediately",
-      "featureTitle": "In the InAppBrowser component, when an iframe fails to load or is blocked (e.g., X-Frame-Options denial), display a user-friendly message with a button to open the URL in a new tab instead of showing a broken or empty iframe. Detect iframe load errors and show a fallback UI immediately.",
+      "featureId": "feature-audit-the-frontend-search-hook-usesearch-ts-and-searchinterface-component-to-ensure-no-google-specific-urls-api-keys-or-oauth-flows-are-referenced-remove-or-replace-any-remaining-google-references",
+      "featureTitle": "Audit the frontend search hook (useSearch.ts) and SearchInterface component to ensure no Google-specific URLs, API keys, or OAuth flows are referenced. Remove or replace any remaining Google references.",
       "files": [
-        "frontend/src/components/InAppBrowser.tsx"
+        "frontend/src/hooks/useSearch.ts"
       ],
       "components": [
         "http-outcalls@3.0.0",

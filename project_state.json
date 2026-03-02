@@ -4,13 +4,13 @@
   "summary": "New project",
   "architectural_notes": [],
   "known_issues": [
-    "Users are seeing a Google 'access denied' page after deployment, indicating a permissions or OAuth configuration issue"
+    "Google access issue persists after attempted fix in Version 9"
   ],
   "isFixRequest": true,
   "existing_features": [
     {
-      "id": "feature-in-the-inappbrowser-component-when-an-iframe-fails-to-load-or-is-blocked-e-g-x-frame-options-denial-display-a-user-friendly-message-with-a-button-to-open-the-url-in-a-new-tab-instead-of-showing-a-broken-or-empty-iframe-detect-iframe-load-errors-and-show-a-fallback-ui-immediately",
-      "title": "In the InAppBrowser component, when an iframe fails to load or is blocked (e.g., X-Frame-Options denial), display a user-friendly message with a button to open the URL in a new tab instead of showing a broken or empty iframe. Detect iframe load errors and show a fallback UI immediately.",
+      "id": "feature-audit-the-frontend-search-hook-usesearch-ts-and-searchinterface-component-to-ensure-no-google-specific-urls-api-keys-or-oauth-flows-are-referenced-remove-or-replace-any-remaining-google-references",
+      "title": "Audit the frontend search hook (useSearch.ts) and SearchInterface component to ensure no Google-specific URLs, API keys, or OAuth flows are referenced. Remove or replace any remaining Google references.",
       "reqIds": [
         "REQ-2"
       ],
@@ -20,14 +20,14 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "Ensure the backend HTTP outcall targets the DuckDuckGo API endpoint and does not make any requests to Google or any URL that would trigger a Google OAuth/access page. Verify the constructed URL in the Motoko actor points to DuckDuckGo (e.g., api.duckduckgo.com) and remove any Google-related URLs.",
+      "summary": "Investigate and fix the Google access issue that persists after Version 9. The backend currently makes HTTP outcalls — ensure the search backend is fully migrated away from any Google endpoints to DuckDuckGo, with no remaining references to Google APIs, OAuth, or Google domains in the Motoko actor or frontend hooks.",
       "reqIds": [
         "REQ-1"
       ],
       "status": "pending"
     }
   ],
-  "projectName": "Fix Google access denied page — replace Google with DuckDuckGo search backend",
+  "projectName": "Fix persistent Google access/OAuth issue",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

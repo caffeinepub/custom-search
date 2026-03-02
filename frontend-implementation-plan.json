@@ -1,21 +1,26 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Fix Google access denied page — replace Google with DuckDuckGo search backend",
+  "title": "Fix persistent Google access/OAuth issue",
   "requirements": [
     {
       "id": "REQ-2",
-      "summary": "Add iframe load error detection and fallback UI to InAppBrowser component for blocked content",
+      "summary": "Audit and remove all Google API references from frontend search hook and SearchInterface component",
       "acceptanceCriteria": [
-        "If an iframe returns an access-denied or blocked response, the user sees a clear error message inside the InAppBrowser modal.",
-        "A visible 'Open in new tab' button is shown as a fallback whenever iframe content cannot be displayed.",
-        "The fallback is triggered automatically on iframe load error without requiring user action beyond clicking the button."
+        "No Google API URLs or OAuth references exist in frontend source files",
+        "Search results render correctly from DuckDuckGo responses",
+        "No access-denied error messages appear in the search UI"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/InAppBrowser.tsx",
+          "path": "frontend/src/hooks/useSearch.ts",
           "operation": "modify",
-          "description": "Add iframe onError and onLoad event handlers to detect when content fails to load or is blocked by X-Frame-Options. Introduce a local state variable to track iframe load failures. When a load error is detected, render a user-friendly fallback message explaining that the content cannot be displayed inline, along with the existing 'Open in new tab' button prominently displayed as the primary action. Ensure the error state is reset when the URL changes. Keep the existing close button and loading spinner logic intact."
+          "description": "Audit the useSearch hook to remove any remaining Google API URLs, OAuth tokens, or Google-specific query parameters. Ensure all search requests use only the backend actor's search method, which routes exclusively to DuckDuckGo. Verify error handling does not reference Google services."
+        },
+        {
+          "path": "frontend/src/components/SearchInterface.tsx",
+          "operation": "modify",
+          "description": "Review and remove any hardcoded Google API endpoints, API keys, or OAuth flows from the SearchInterface component. Ensure the component only calls useSearch hook and displays DuckDuckGo results. Verify no Google domain references exist in error messages or fallback UI."
         }
       ]
     }

@@ -1,7 +1,7 @@
 {
   "frontend/src/App.tsx": "Root application component that renders the SearchInterface as the sole view inside a full-height flex container.",
   "frontend/src/components/SearchInterface.tsx": "Complete search interface with a centered form, loading/error/empty states, flattened DuckDuckGo RelatedTopics rendering in cards, and in-app browser integration for opening result links.",
-  "frontend/src/hooks/useSearch.ts": "Custom hook managing search state — calls the backend actor's `search` method with a URL-encoded query, validates JSON responses, extracts readable ICP canister trap error messages, and exposes `{ searchResults, isLoading, isActorFetching, error, performSearch }`.",
+  "frontend/src/hooks/useSearch.ts": "Custom hook managing search state — calls the backend actor's `search` method, validates JSON responses, and extracts readable error messages. Improved error extraction uses multi-line regex patterns and explicit checks for node-provider/HTTP-outcall authorization failures, surfacing a clear user-friendly message instead of raw ICP trap text.",
   "frontend/src/index.css": "Global styles defining an OKLCH-based warm coral/teal color system for both light and dark modes, with Tailwind directives and a fade-in animation utility.",
   "frontend/tailwind.config.js": "Tailwind configuration mapping OKLCH CSS variables to semantic color tokens, with custom border-radius, shadow, font-family, and accordion keyframe extensions.",
   "frontend/src/utils/urlFormatter.tsx": "Utility that detects URLs in text and converts them to clickable elements; accepts an optional `onLinkClick` callback to open links in the in-app browser instead of navigating natively.",

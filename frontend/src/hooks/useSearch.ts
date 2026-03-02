@@ -16,23 +16,48 @@ export function useSearch() {
       if (typeof e.message === 'string') {
         const msg = e.message;
 
-        // Extract meaningful part from ICP canister trap messages
-        const trapMatch = msg.match(/Canister trapped[^:]*:\s*(.+)/i);
-        if (trapMatch) return trapMatch[1].trim();
-
-        const rejectMatch = msg.match(/Reject text:\s*(.+)/i);
-        if (rejectMatch) return rejectMatch[1].trim();
-
-        // HTTP outcall / node provider errors
+        // Check for node provider / HTTP outcall authorization issues first
         if (
-          msg.includes('HTTP outcall') ||
-          msg.includes('node provider') ||
-          msg.includes('status code 0')
+          msg.toLowerCase().includes('not authorized') ||
+          msg.toLowerCase().includes('node provider') ||
+          msg.toLowerCase().includes('http outcall') ||
+          msg.toLowerCase().includes('status code 0') ||
+          msg.toLowerCase().includes('network error')
         ) {
-          return 'Search service is temporarily unavailable. HTTP outcalls may not be enabled in this environment.';
+          return 'Search is unavailable in this environment. HTTP outcalls require a production deployment with an authorized node provider.';
         }
 
-        if (msg.length < 200) return msg;
+        // Extract meaningful part from ICP canister trap messages
+        // The trap text can span multiple lines — capture everything after the colon
+        const trapMatch = msg.match(/Canister trapped[^:]*:\s*([\s\S]+)/i);
+        if (trapMatch) {
+          const trapText = trapMatch[1].trim();
+          // Re-check the extracted trap text for known patterns
+          if (
+            trapText.toLowerCase().includes('not authorized') ||
+            trapText.toLowerCase().includes('node provider') ||
+            trapText.toLowerCase().includes('http outcall')
+          ) {
+            return 'Search is unavailable in this environment. HTTP outcalls require a production deployment with an authorized node provider.';
+          }
+          // Return a reasonable slice of the trap message
+          return trapText.slice(0, 200);
+        }
+
+        const rejectMatch = msg.match(/Reject text:\s*([\s\S]+)/i);
+        if (rejectMatch) {
+          const rejectText = rejectMatch[1].trim();
+          if (
+            rejectText.toLowerCase().includes('not authorized') ||
+            rejectText.toLowerCase().includes('node provider') ||
+            rejectText.toLowerCase().includes('http outcall')
+          ) {
+            return 'Search is unavailable in this environment. HTTP outcalls require a production deployment with an authorized node provider.';
+          }
+          return rejectText.slice(0, 200);
+        }
+
+        if (msg.length < 300) return msg;
       }
 
       if (typeof e.code === 'string' || typeof e.code === 'number') {
@@ -40,8 +65,16 @@ export function useSearch() {
       }
     }
 
-    if (typeof err === 'string' && err.length < 200) {
-      return err;
+    if (typeof err === 'string') {
+      const s = err;
+      if (
+        s.toLowerCase().includes('not authorized') ||
+        s.toLowerCase().includes('node provider') ||
+        s.toLowerCase().includes('http outcall')
+      ) {
+        return 'Search is unavailable in this environment. HTTP outcalls require a production deployment with an authorized node provider.';
+      }
+      if (s.length < 300) return s;
     }
 
     return 'Failed to perform search. Please try again.';

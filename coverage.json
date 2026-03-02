@@ -1,7 +1,7 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-03-02T19:08:31.834Z",
+  "generatedAt": "2026-03-02T19:14:45.427Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
@@ -12,20 +12,21 @@
     "items": [
       {
         "id": "REQ-1",
-        "summary": "Ensure the backend HTTP outcall targets the DuckDuckGo API endpoint and does not make any requests to Google or any URL that would trigger a Google OAuth/access page. Verify the constructed URL in the Motoko actor points to DuckDuckGo (e.g., api.duckduckgo.com) and remove any Google-related URLs.",
+        "summary": "Investigate and fix the Google access issue that persists after Version 9. The backend currently makes HTTP outcalls — ensure the search backend is fully migrated away from any Google endpoints to DuckDuckGo, with no remaining references to Google APIs, OAuth, or Google domains in the Motoko actor or frontend hooks.",
         "status": "unknown",
         "plannedFiles": [],
         "matchedFiles": []
       },
       {
         "id": "REQ-2",
-        "summary": "In the InAppBrowser component, when an iframe fails to load or is blocked (e.g., X-Frame-Options denial), display a user-friendly message with a button to open the URL in a new tab instead of showing a broken or empty iframe. Detect iframe load errors and show a fallback UI immediately.",
+        "summary": "Audit the frontend search hook (useSearch.ts) and SearchInterface component to ensure no Google-specific URLs, API keys, or OAuth flows are referenced. Remove or replace any remaining Google references.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/components/InAppBrowser.tsx"
+          "frontend/src/hooks/useSearch.ts",
+          "frontend/src/components/SearchInterface.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/components/InAppBrowser.tsx"
+          "frontend/src/hooks/useSearch.ts"
         ]
       }
     ]
@@ -36,7 +37,7 @@
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/src/components/InAppBrowser.tsx",
+    "frontend/src/hooks/useSearch.ts",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

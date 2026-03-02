@@ -1,52 +1,53 @@
 {
   "kind": "build_request",
-  "title": "Fix Google access denied page — replace Google with DuckDuckGo search backend",
+  "title": "Fix persistent Google access/OAuth issue",
   "priority": "high",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Ensure the backend HTTP outcall targets the DuckDuckGo API endpoint and does not make any requests to Google or any URL that would trigger a Google OAuth/access page. Verify the constructed URL in the Motoko actor points to DuckDuckGo (e.g., api.duckduckgo.com) and remove any Google-related URLs.",
+      "text": "Investigate and fix the Google access issue that persists after Version 9. The backend currently makes HTTP outcalls — ensure the search backend is fully migrated away from any Google endpoints to DuckDuckGo, with no remaining references to Google APIs, OAuth, or Google domains in the Motoko actor or frontend hooks.",
       "target": "backend",
       "source": {
         "messageIds": [
-          "msg-1"
+          "msg-3"
         ],
         "quotes": [
-          "It has a google page that tells me i dont have access to the page"
+          "The access issue is not gone"
         ]
       },
       "acceptanceCriteria": [
-        "The Motoko actor constructs HTTP outcall URLs pointing only to the DuckDuckGo API.",
-        "No Google domains appear in any backend HTTP request URL.",
-        "Searching returns DuckDuckGo results without redirecting to a Google access-denied page."
+        "No HTTP outcalls to any Google domain (google.com, googleapis.com, etc.) remain in the backend actor",
+        "All search queries are routed exclusively to the DuckDuckGo API endpoint",
+        "Search results load successfully without any access-denied or OAuth errors"
       ]
     },
     {
       "id": "REQ-2",
-      "text": "In the InAppBrowser component, when an iframe fails to load or is blocked (e.g., X-Frame-Options denial), display a user-friendly message with a button to open the URL in a new tab instead of showing a broken or empty iframe. Detect iframe load errors and show a fallback UI immediately.",
+      "text": "Audit the frontend search hook (useSearch.ts) and SearchInterface component to ensure no Google-specific URLs, API keys, or OAuth flows are referenced. Remove or replace any remaining Google references.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-1"
+          "msg-3"
         ],
         "quotes": [
-          "It has a google page that tells me i dont have access to the page"
+          "The access issue is not gone"
         ]
       },
       "acceptanceCriteria": [
-        "If an iframe returns an access-denied or blocked response, the user sees a clear error message inside the InAppBrowser modal.",
-        "A visible 'Open in new tab' button is shown as a fallback whenever iframe content cannot be displayed.",
-        "The fallback is triggered automatically on iframe load error without requiring user action beyond clicking the button."
+        "No Google API URLs or OAuth references exist in frontend source files",
+        "Search results render correctly from DuckDuckGo responses",
+        "No access-denied error messages appear in the search UI"
       ]
     }
   ],
   "constraints": [
-    "Do not modify files under frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, or frontend/src/components/ui."
+    "Do not modify files under frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, or frontend/src/components/ui",
+    "All Motoko logic must remain in a single actor in backend/main.mo"
   ],
   "nonGoals": [
-    "Adding Google Search or any Google API integration.",
-    "Implementing OAuth or any third-party authentication flow.",
-    "Changing the overall app design or color theme."
+    "Changing the visual design or layout of the search UI",
+    "Adding new search providers beyond DuckDuckGo",
+    "Modifying authentication or Internet Identity flows"
   ],
   "imageRequirements": {
     "required": [],
